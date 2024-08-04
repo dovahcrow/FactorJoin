@@ -9,10 +9,10 @@ import os
 from Schemas.stats.schema import gen_stats_light_schema
 from Schemas.imdb.schema import gen_imdb_schema
 from Schemas.ssb.schema import gen_1gb_ssb_schema
-from Join_scheme.binning import identify_key_values, sub_optimal_bucketize, greedy_bucketize, \
+from .binning import identify_key_values, sub_optimal_bucketize, greedy_bucketize, \
                                 fixed_start_key_bucketize, get_start_key, naive_bucketize, \
                                 Table_bucket, update_bins, apply_binning_to_data_value_count
-from Join_scheme.bound import Factor
+from .factor import Factor
 
 logger = logging.getLogger(__name__)
 

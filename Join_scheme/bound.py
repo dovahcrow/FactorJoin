@@ -1,12 +1,12 @@
 import numpy as np
 import copy
 
-from Join_scheme.join_graph import process_condition, get_join_hyper_graph, parse_query_all_join, \
+from .join_graph import process_condition, get_join_hyper_graph, parse_query_all_join, \
     get_equivalent_key_group
-from Join_scheme.data_prepare import identify_key_values
+from .data_prepare import identify_key_values
 from BayesCard.Evaluation.cardinality_estimation import timestamp_transorform, construct_table_query
 from Sampling.load_sample import load_sample_imdb_one_query
-from Join_scheme.factor import Factor, Group_Factor
+from .factor import Factor, Group_Factor
 
 
 class Bound_ensemble:
@@ -201,6 +201,10 @@ class Bound_ensemble:
             multiplier[non_zero_idx] = multiplier[non_zero_idx] * min_number
             return np.sum(multiplier)
 
+    def test111(self):
+        print("in python")
+        pass
+
     def get_optimal_elimination_order(self, equivalent_group, join_keys, factors):
         cardinalities = dict()
         lengths = dict()
@@ -244,6 +248,7 @@ class Bound_ensemble:
         return optimal_order, tables_involved, relevant_keys
 
     def get_cardinality_bound_one(self, query_str, query_name=None):
+        self.test111()
         tables_all, table_queries, join_cond, join_keys = self.parse_query_simple(query_str)
         equivalent_group = get_join_hyper_graph(join_keys, self.equivalent_keys)
         if self.bns is not None:
